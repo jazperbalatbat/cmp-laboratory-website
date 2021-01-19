@@ -1,0 +1,140 @@
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `updationDate` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `appointment` (
+  `id` int(11) NOT NULL,
+  `exam` varchar(1000) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `consultancyFees` int(11) NOT NULL,
+  `appointmentDate` varchar(255) NOT NULL,
+  `appointmentTime` varchar(255) NOT NULL,
+  `postingDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `userStatus` int(11) NOT NULL,
+  `adminStatus` int(11) NOT NULL,
+ `appointmentStatus` int(11) NOT NULL,
+  `updationDate` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `doctors` (
+  `id` int(11) NOT NULL,
+  `specilization` varchar(255) DEFAULT NULL,
+  `doctorName` varchar(255) DEFAULT NULL,
+  `address` longtext DEFAULT NULL,
+  `docFees` varchar(255) DEFAULT NULL,
+  `contactno` bigint(11) DEFAULT NULL,
+  `docEmail` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `creationDate` timestamp NULL DEFAULT current_timestamp(),
+  `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `doctorslog` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `userip` binary(16) DEFAULT NULL,
+  `loginTime` timestamp NULL DEFAULT current_timestamp(),
+  `logout` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `doctorspecilization` (
+  `id` int(11) NOT NULL,
+  `specilization` varchar(255) DEFAULT NULL,
+  `creationDate` timestamp NULL DEFAULT current_timestamp(),
+  `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `tblcontactus` (
+  `id` int(11) NOT NULL,
+  `fullname` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `contactno` bigint(12) DEFAULT NULL,
+  `message` mediumtext DEFAULT NULL,
+  `PostingDate` timestamp NULL DEFAULT current_timestamp(),
+  `AdminRemark` mediumtext DEFAULT NULL,
+  `LastupdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `IsRead` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `tbl_images` (  
+  `id` int(11) NOT NULL AUTO_INCREMENT,  
+  `file` longblob NOT NULL,  
+  `fullName` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,  
+  PRIMARY KEY (`id`)  
+ ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ; 
+
+CREATE TABLE `userlog` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `userip` binary(16) DEFAULT NULL,
+  `loginTime` timestamp NULL DEFAULT current_timestamp(),
+  `logout` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `users` (
+  `id` int(11) AUTOINCREMENT NOT NULL,
+  `fullName` varchar(255) DEFAULT NULL,
+  `address` longtext DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `regDate` timestamp NULL DEFAULT current_timestamp(),
+  `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `doctors`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `doctorslog`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `doctorspecilization`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `tblcontactus`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `userlog`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+ALTER TABLE `appointment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+ALTER TABLE `doctors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+ALTER TABLE `doctorslog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+ALTER TABLE `doctorspecilization`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+ALTER TABLE `tblcontactus`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+ALTER TABLE `userlog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
